@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ril17-exams-generator", "ril17-exams-generator\ril17-exams-generator.csproj", "{A8E633CE-0B17-481E-8CD1-A0E96A1BB367}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ril17ExamsGenerator", "ril17-exams-generator\ril17ExamsGenerator.csproj", "{A8E633CE-0B17-481E-8CD1-A0E96A1BB367}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

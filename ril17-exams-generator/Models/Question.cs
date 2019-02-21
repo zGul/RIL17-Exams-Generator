@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 
 namespace ril17ExamsGenerator.Models
 {
-    public abstract class Question
+    public enum QuestionType
+    {
+        M, U, Y
+    }
+    public class Question
     {
         public int ID { set; get; }
 
         [Required]
         public string question { set; get; }
+
+        [Required]
+        public List<Response> responses { set; get; }
+
+        [Required]
+        public QuestionType type { set; get; }
+
     }
 }

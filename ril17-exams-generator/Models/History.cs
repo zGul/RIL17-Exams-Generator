@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace ril17ExamsGenerator.Models
 {
-    public class Histo
+    public class History
     {
-        private Examen exam { get; set; }
-        private Users user { get; set; }
-        private int nbTentative { get; set; }
+        public int ID { get; set; }
+        public Exam exam { get; set; }
     }
 }

@@ -33,6 +33,20 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-area="" asp-controller="Exam" asp-action="CreateExam">Exam Page</a>
+                            }
+                            else
+                            {
+                                <a asp-area="" asp-controller="Exam" asp-action="AnswerExam">Exam Page</a>
+                            }
+
+                        }
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/Identity/Account/Register">Register</a></li>

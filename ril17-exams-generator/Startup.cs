@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ril17ExamsGenerator.Dal;
 
 namespace ril17_exams_generator
 {
@@ -25,8 +27,11 @@ namespace ril17_exams_generator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ExamGeneratorContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
-                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddEntityFrameworkStores<ExamGeneratorContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 

@@ -38,11 +38,11 @@
                         {
                             @if (User.IsInRole("Admin"))
                             {
-                                <a asp-area="" asp-controller="Exam" asp-action="CreateExam">Exam Page</a>
+                                <a asp-area="" asp-controller="Exam" asp-action="Create">Exam Page</a>
                             }
                             else
                             {
-                                <a asp-area="" asp-controller="Exam" asp-action="AnswerExam">Exam Page</a>
+                                <a asp-area="" asp-controller="Exam" asp-action="Index">Exam Page</a>
                             }
 
                         }

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ril17ExamsGenerator.Models;
 using System;
 using System.Collections.Generic;
@@ -7,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ril17ExamsGenerator.Dal
 {
-    public class ExamGeneratorContext : DbContext
+    public class ExamGeneratorContext : IdentityDbContext<IdentityUser>
     {
-        public  DbSet<Exam> exams { get; set; }
+        public DbSet<Exam> exams { get; set; }
         public DbSet<Question> questions { get; set; }
         public DbSet<History> histories { get; set; }
 
@@ -26,6 +28,11 @@ namespace ril17ExamsGenerator.Dal
             builder.Entity<History>()
                 .HasOne(h => h.exam);
             //To complete
+
+            builder.Entity<Question>()
+                .HasMany(q => q.responses)
+                .WithOne(r => r.question)
+                .IsRequired();
         }
     }
 }

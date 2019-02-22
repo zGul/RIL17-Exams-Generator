@@ -45,9 +45,20 @@ namespace ril17ExamsGenerator.Controllers
         }
 
        
-        public IActionResult Answer()
+        public async Task<IActionResult> AnswerAsync(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var exam = await _context.exams
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (exam == null)
+            {
+                return NotFound();
+            }
+
+            return View(exam);
         }
 
         public IActionResult Validate()

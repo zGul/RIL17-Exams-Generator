@@ -15,5 +15,8 @@ namespace ril17ExamsGenerator.Models
 
         [Required] 
         public bool isCorrect { get; set; }
+
+        [Required]
+        public Question question { get; set; }
     }
 }

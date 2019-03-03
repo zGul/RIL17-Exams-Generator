@@ -45,7 +45,7 @@ namespace ril17ExamsGenerator.Controllers
         }
 
        
-        public async Task<IActionResult> AnswerAsync(int? id)
+        public async Task<IActionResult> Answer(int? id)
         {
             if (id == null)
             {

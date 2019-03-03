@@ -24,7 +24,12 @@ namespace ril17ExamsGenerator.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.exams.ToListAsync());
-        }       
+        }     
+        
+        public void ControlExam()
+        {
+
+        }
 
         // GET: Exams/Details/5
         public async Task<IActionResult> Details(int? id)

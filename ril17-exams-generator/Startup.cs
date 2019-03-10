@@ -35,27 +35,6 @@ namespace ril17_exams_generator
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
-            //Password Strength Setting 
-            services.Configure<IdentityOptions>(options =>
-            {
-                // Password settings 
-                options.Password.RequireDigit = true;
-                options.Password.RequiredLength = 8;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = true;
-                options.Password.RequireLowercase = false;
-                options.Password.RequiredUniqueChars = 6;
-
-                // Lockout settings 
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-                options.Lockout.MaxFailedAccessAttempts = 10;
-                options.Lockout.AllowedForNewUsers = true;
-
-                // User settings 
-                options.User.RequireUniqueEmail = true;
-            });
-
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -68,7 +47,7 @@ namespace ril17_exams_generator
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -79,6 +58,7 @@ namespace ril17_exams_generator
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            CreateUsersRoles(services).Wait();
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -89,6 +69,61 @@ namespace ril17_exams_generator
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private async Task CreateUsersRoles(IServiceProvider services)
+        {
+            var RoleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = services.GetRequiredService<UserManager<IdentityUser>>();
+
+            IdentityResult roleResult;
+            string[] roleNames = { "Student", "Admin" };
+            //Create each role
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+
+            //Adding a student
+            var student = new IdentityUser
+            {
+                UserName = "studentTest",
+                Email = "student.test@email.com"
+            };
+
+            string StudentPassword = "studentTest_168";
+            var _student= await UserManager.FindByEmailAsync("student.test@email.com");
+
+            if (_student == null)
+            {
+                var createPowerUser = await UserManager.CreateAsync(student, StudentPassword);
+                if (createPowerUser.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(student, "Student");
+                }
+            }
+
+            // Adding Admin 
+            var admin = new IdentityUser
+            {
+                UserName = "adminTest",
+                Email = "admin.test@email.com"
+            };
+
+            string adminPassword = "Admin_168";
+            var _admin = await UserManager.FindByEmailAsync("admin.test@email.com");
+            if (_admin == null)
+            {
+                var createPowerUser = await UserManager.CreateAsync(admin, adminPassword);
+                if (createPowerUser.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(admin, "Admin");
+                }
+            }
         }
     }
 }

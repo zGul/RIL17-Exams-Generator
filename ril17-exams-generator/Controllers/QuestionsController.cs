@@ -57,17 +57,20 @@ namespace ril17ExamsGenerator.Controllers
             return View("MultipleChoice");
         }
 
-        public void InsertYN()
+        public IActionResult InsertYN(string name)
         {
             //Insert Donné en table
+            return View("Validate");
         }
-        public void InsertSChoice()
+        public IActionResult InsertSChoice(string name, string q1, string q2, string q3, string q4)
         {
             //Insert Donné en table
+            return View("Validate");
         }
-        public void InsertMChoice()
+        public IActionResult InsertMChoice(string name, string q1, string q2, string q3, string q4)
         {
             //Insert Donné en table
+            return View("Validate");
         }
 
         // POST: Questions/Create

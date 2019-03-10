@@ -13,16 +13,20 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
-                <p>Question : </p>
-                <input type="text" id="Name" /> <br />
+                @using (Html.BeginForm("Exams", "Validate"))
+                {
+                    <p>Nom de l'examen : </p>
+                    @Html.TextBox("texte") <br />
+                    <p>Nombre de question : </p>
+                    @Html.TextBox("nombre") <br />
+                    <p>La durée de l'examen : </p>
+                    @Html.TextBox("duree") <br />
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                }
             </div>
-            <div>
-                <p>Nombre de question : </p>
-                <input type="text" id="Nb"/> <br />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+            
         </form>
     </div>
 </div>

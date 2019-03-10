@@ -8,6 +8,12 @@ namespace ril17ExamsGenerator.Models
 {
     public class Exam
     {
+        public Exam(string name, string nombre, string duree)
+        {
+            this.name = name;
+            this.nombre = int.Parse(nombre);
+            this.duree = int.Parse(duree);
+        }
         public int ID { get; set; }
 
         [Required]
@@ -16,6 +22,7 @@ namespace ril17ExamsGenerator.Models
         [Required]
         private int duree { get; set; }
 
+        private int nombre { get; set; }
         [Required]
         public List<Question> questions { get; set; }
 

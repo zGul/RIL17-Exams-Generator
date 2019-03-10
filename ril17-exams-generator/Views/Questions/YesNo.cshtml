@@ -10,21 +10,25 @@
     <div class="col-md-4">
         <form asp-action="InsertYN">
             <div>
-                <p>Question : </p>
-                <input type="text" id="Name" /> <br />
-                <div>
-                    <input type="radio" id="YES" name="drone" value="YES"
-                           checked>
-                    <label for="YES">YES</label>
-                </div>
 
-                <div>
-                    <input type="radio" id="NO" name="drone" value="NO">
-                    <label for="NO">NO</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                @using (Html.BeginForm("Questions", "InsertYN"))
+                {
+                    <p>Question : </p>
+                    @Html.TextBox("texte") <br />
+                    <div>
+                        <input type="radio" id="YES" name="drone" value="YES"
+                               checked>
+                        <label for="YES">YES</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="NO" name="drone" value="NO">
+                        <label for="NO">NO</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                }
             </div>
         </form>
     </div>

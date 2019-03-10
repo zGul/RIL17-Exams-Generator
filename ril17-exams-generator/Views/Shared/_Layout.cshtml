@@ -34,18 +34,49 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li>
-                        @if (User.Identity.IsAuthenticated)
+                        @*@if (User.Identity.IsAuthenticated)
                         {
                             @if (User.IsInRole("Admin"))
-                            {
+                            {*@
                                 <a asp-area="" asp-controller="Exam" asp-action="Create">Exam Page</a>
-                            }
+                            @*}
                             else
                             {
                                 <a asp-area="" asp-controller="Exam" asp-action="Index">Exam Page</a>
-                            }
+                            }*@
 
                         }
+                    </li>
+                    <li>
+                        @* @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("Admin"))
+                {*@
+                        <a asp-area="" asp-controller="Questions" asp-action="CreateYN">Create Y&N</a>
+             
+                        @*}
+            }*@
+                    </li>
+                    <li>
+                        @* @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("Admin"))
+                {*@
+                        
+                        <a asp-area="" asp-controller="Questions" asp-action="CreateSC">Create SINGLE CHOICE</a>
+                        
+                        @*}
+            }*@
+                    </li>
+                    <li>
+                        @* @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("Admin"))
+                {*@
+                       
+                        <a asp-area="" asp-controller="Questions" asp-action="CreateMC">Create MULTIPLE CHOICE</a>
+                        @*}
+            }*@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

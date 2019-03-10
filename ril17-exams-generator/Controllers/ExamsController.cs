@@ -24,28 +24,14 @@ namespace ril17ExamsGenerator.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.exams.ToListAsync());
-        }       
-
-        // GET: Exams/Details/5
-        public async Task<IActionResult> Details(int? id)
+        }     
+        
+        public void ControlExam()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var exam = await _context.exams
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (exam == null)
-            {
-                return NotFound();
-            }
-
-            return View(exam);
         }
-
        
-        public async Task<IActionResult> AnswerAsync(int? id)
+        public async Task<IActionResult> Answer(int? id)
         {
             if (id == null)
             {
@@ -61,13 +47,23 @@ namespace ril17ExamsGenerator.Controllers
             return View(exam);
         }
 
-        public IActionResult Validate()
+        public IActionResult Validate(string name, string nombre, string duree)
         {
-            return View();
+            //Insert data
+            int nb = int.Parse(nombre);
+            int[] tabQuestion = new int[nb];
+            int maxId = 50; 
+            for (int i = 0; i <= nb; i++)
+            {
+                Random rdm = new Random();
+                tabQuestion[i] = rdm.Next(0,maxId);
+            }
+            Exam exam = new Exam(name, nombre, duree);
+            return View("Validate");
         }
 
         // GET: Exams/Create
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -86,6 +82,23 @@ namespace ril17ExamsGenerator.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            return View(exam);
+        }
+        // GET: Exams/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var exam = await _context.exams
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (exam == null)
+            {
+                return NotFound();
+            }
+
             return View(exam);
         }
 

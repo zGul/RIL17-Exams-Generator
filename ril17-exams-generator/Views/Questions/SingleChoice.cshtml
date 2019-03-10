@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "SingleChoice";
+}
+
+<h2>Question choix Unique</h2>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="InsertSChoice">
+            <div>
+                @using (Html.BeginForm("Questions", "InsertSChoice"))
+                {
+                    <p>Question : </p>
+                    @Html.TextBox("texte") <br />
+                    <div>
+                        <input type="radio" id="S1" name="drone" value="NO">
+                        @Html.TextBox("q1") <br />
+                    </div>
+                    <div>
+                        <input type="radio" id="S2" name="drone" value="NO">
+                        @Html.TextBox("q2") <br />
+                    </div>
+                    <div>
+                        <input type="radio" id="S3" name="drone" value="NO">
+                        @Html.TextBox("q3") <br />
+                    </div>
+                    <div>
+                        <input type="radio" id="S4" name="drone" value="NO">
+                        @Html.TextBox("q4") <br />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

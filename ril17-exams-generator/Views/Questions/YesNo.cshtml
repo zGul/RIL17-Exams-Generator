@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "YesNp";
+}
+
+<h2>Question OUi ou NON</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="InsertYN">
+            <div>
+
+                @using (Html.BeginForm("Questions", "InsertYN"))
+                {
+                    <p>Question : </p>
+                    @Html.TextBox("texte") <br />
+                    <div>
+                        <input type="radio" id="YES" name="drone" value="YES"
+                               checked>
+                        <label for="YES">YES</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="NO" name="drone" value="NO">
+                        <label for="NO">NO</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

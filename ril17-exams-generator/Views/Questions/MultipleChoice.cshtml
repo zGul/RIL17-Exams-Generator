@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "MultipleChoice";
+}
+
+<h2>Question choix Multiple</h2>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="InsertMChoice">
+            <div>
+                @using (Html.BeginForm("Questions", "InsertMChoice"))
+                {
+                    <p>Question : </p>
+                    @Html.TextBox("texte") <br />
+                    <div>
+                        <input type="checkbox" id="M1" name="drone" value="NO">
+                        @Html.TextBox("q1") <br />
+                    </div>
+                    <div>
+                        <input type="checkbox" id="M2" name="drone" value="NO">
+                        @Html.TextBox("q2") <br />
+                    </div>
+                    <div>
+                        <input type="checkbox" id="M3" name="drone" value="NO">
+                        @Html.TextBox("q3") <br />
+                    </div>
+                    <div>
+                        <input type="checkbox" id="M4" name="drone" value="NO">
+                        @Html.TextBox("q4") <br />
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

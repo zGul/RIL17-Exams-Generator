@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,6 +24,5 @@ namespace ril17ExamsGenerator.Models
         [Required]
         public List<Question> questions { get; set; }
 
-        //public List<User> users { get; set; }
  }
 }

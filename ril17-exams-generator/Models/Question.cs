@@ -17,7 +17,7 @@ namespace ril17ExamsGenerator.Models
         [Required]
         public string question { set; get; }
 
-        
+        [Required]
         public List<Response> responses { set; get; }
 
         [Required]

@@ -87,7 +87,7 @@ namespace ril17ExamsGenerator.Controllers
             using (var _context = new ExamGeneratorContext(optionsBuilder.Options))
             {
                 _context.Add(question);
-                //await _context.SaveChangesAsync();
+                _context.SaveChangesAsync();
             }
             return View("Validate");
         }
@@ -136,7 +136,7 @@ namespace ril17ExamsGenerator.Controllers
             using (var _context = new ExamGeneratorContext(optionsBuilder.Options))
             {
                 _context.Add(question);
-                //await _context.SaveChangesAsync();
+                _context.SaveChangesAsync();
             }
             return View("Validate");
         }
@@ -186,7 +186,7 @@ namespace ril17ExamsGenerator.Controllers
             using (var _context = new ExamGeneratorContext(optionsBuilder.Options))
             {
                 _context.Add(question);
-                //await _context.SaveChangesAsync();
+                _context.SaveChangesAsync();
             }
             return View("Validate");
         }

@@ -17,13 +17,13 @@ namespace ril17ExamsGenerator.Models
         public int ID { get; set; }
 
         [Required]
-        private string name { get; set; }
+        public string name { get; set; }
 
         [Required]
-        private int duree { get; set; }
+        public int duree { get; set; }
 
         [Required]
-        private int nombreQuestion { get; set; }
+        public int nombreQuestion { get; set; }
 
         [Required]
         public List<Question> questions { get; set; }

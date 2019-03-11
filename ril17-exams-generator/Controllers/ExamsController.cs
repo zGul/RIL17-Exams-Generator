@@ -80,7 +80,7 @@ namespace ril17ExamsGenerator.Controllers
             {
                 _context.Add(exam);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Validate");
             }
             return View(exam);
         }

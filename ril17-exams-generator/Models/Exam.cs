@@ -29,7 +29,7 @@ namespace ril17ExamsGenerator.Models
         public int nombre { get; set; }
 =======
         [Required]
-        private int nombreQuestion { get; set; }
+        public int nombreQuestion { get; set; }
 
 >>>>>>> a4de1205b264d6be37970faf149167c357dbc948
         [Required]

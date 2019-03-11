@@ -58,6 +58,7 @@ namespace ril17ExamsGenerator.Controllers
                 Random rdm = new Random();
                 tabQuestion[i] = rdm.Next(0,maxId);
             }
+<<<<<<< HEAD
             var optionsBuilder = new DbContextOptionsBuilder<ExamGeneratorContext>();
             var exam = new Exam()
             {
@@ -71,6 +72,9 @@ namespace ril17ExamsGenerator.Controllers
             {
 
             }
+=======
+            //Exam exam = new Exam(name, nombre, duree);
+>>>>>>> a4de1205b264d6be37970faf149167c357dbc948
             return View("Validate");
         }
 

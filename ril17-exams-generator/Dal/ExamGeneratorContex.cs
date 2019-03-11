@@ -13,7 +13,7 @@ namespace ril17ExamsGenerator.Dal
     {
         public DbSet<Exam> exams { get; set; }
         public DbSet<Question> questions { get; set; }
-        public DbSet<History> histories { get; set; }
+        //public DbSet<History> histories { get; set; }
 
         public ExamGeneratorContext(DbContextOptions<ExamGeneratorContext> options) : base(options)
         {
@@ -25,8 +25,8 @@ namespace ril17ExamsGenerator.Dal
                 .HasMany(e => e.questions).
                 WithOne();
 
-            builder.Entity<History>()
-                .HasOne(h => h.exam);
+            //builder.Entity<History>()
+                //.HasOne(h => h.exam);
             //To complete
 
             builder.Entity<Question>()

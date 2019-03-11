@@ -51,14 +51,26 @@ namespace ril17ExamsGenerator.Controllers
         {
             //Insert data
             int nb = int.Parse(nombre);
-            int[] tabQuestion = new int[nb];
+            Question[] tabQuestion = new Question[nb];
             int maxId = 50; 
             for (int i = 0; i <= nb; i++)
             {
                 Random rdm = new Random();
                 tabQuestion[i] = rdm.Next(0,maxId);
             }
-            Exam exam = new Exam(name, nombre, duree);
+            var optionsBuilder = new DbContextOptionsBuilder<ExamGeneratorContext>();
+            var exam = new Exam()
+            {
+                name = name,
+                duree = int.Parse(duree),
+                nombre = nb,
+                questions = tabQuestion
+
+            }
+            using(var context = new ExamGeneratorContext(optionsBuilder.Options))
+            {
+
+            }
             return View("Validate");
         }
 

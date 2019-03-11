@@ -58,7 +58,7 @@ namespace ril17ExamsGenerator.Controllers
                 Random rdm = new Random();
                 tabQuestion[i] = rdm.Next(0,maxId);
             }
-            Exam exam = new Exam(name, nombre, duree);
+            //Exam exam = new Exam(name, nombre, duree);
             return View("Validate");
         }
 

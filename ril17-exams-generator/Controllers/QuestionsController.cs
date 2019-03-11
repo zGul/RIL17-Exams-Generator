@@ -60,16 +60,22 @@ namespace ril17ExamsGenerator.Controllers
         public IActionResult InsertYN(string name)
         {
             //Insert Donné en table
+            //_context.Add(question);
+            //await _context.SaveChangesAsync();
             return View("Validate");
         }
         public IActionResult InsertSChoice(string name, string q1, string q2, string q3, string q4)
         {
             //Insert Donné en table
+           //_context.Add(question);
+            //await _context.SaveChangesAsync();
             return View("Validate");
         }
         public IActionResult InsertMChoice(string name, string q1, string q2, string q3, string q4)
         {
             //Insert Donné en table
+            //_context.Add(question);
+            //await _context.SaveChangesAsync();
             return View("Validate");
         }
 

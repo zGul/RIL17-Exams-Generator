@@ -23,6 +23,5 @@ namespace ril17ExamsGenerator.Models
 
         [Required]
         public List<Question> questions { get; set; }
-
  }
 }

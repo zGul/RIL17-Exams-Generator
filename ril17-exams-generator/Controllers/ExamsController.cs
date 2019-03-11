@@ -44,19 +44,23 @@ namespace ril17ExamsGenerator.Controllers
                 return NotFound();
             }
 
-            return View(exam);
+            return View("Answer");
         }
 
         public IActionResult Validate(string name, string nombre, string duree)
         {
             //Insert data
             int nb = int.Parse(nombre);
-            Question[] tabQuestion = new Question[nb];
-            int maxId = 50; 
+            List<Question> tabQuestion = new List<Question>();
+            int maxId=1; 
             for (int i = 0; i <= nb; i++)
             {
                 Random rdm = new Random();
-                tabQuestion[i] = rdm.Next(0,maxId);
+                //maxId = Dernier ID de la table
+                int id = rdm.Next(0,maxId);
+                //Récupération des infos de la question
+                Question q1 = new Question();
+                tabQuestion.Add(q1);
             }
             var optionsBuilder = new DbContextOptionsBuilder<ExamGeneratorContext>();
             var exam = new Exam()
@@ -65,11 +69,11 @@ namespace ril17ExamsGenerator.Controllers
                 duree = int.Parse(duree),
                 nombre = nb,
                 questions = tabQuestion
-
-            }
-            using(var context = new ExamGeneratorContext(optionsBuilder.Options))
+            };
+            using(var _context = new ExamGeneratorContext(optionsBuilder.Options))
             {
-
+                _context.Add(exam);
+                //await _context.SaveChangesAsync();
             }
             return View("Validate");
         }

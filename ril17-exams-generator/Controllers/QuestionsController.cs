@@ -59,23 +59,135 @@ namespace ril17ExamsGenerator.Controllers
 
         public IActionResult InsertYN(string name)
         {
-            //Insert Donné en table
-            //_context.Add(question);
-            //await _context.SaveChangesAsync();
+            List<Response> responses = new List<Response>();
+            var question = new Question()
+            {
+                question = name,
+                type = QuestionType.Y,
+                responses = responses
+            };
+            var rep1 = new Response()
+            {
+                response = "YES",
+                question = question,
+                isCorrect = true
+            };
+            var rep2 = new Response()
+            {
+                response = "YES",
+                question = question,
+                isCorrect = false
+            };
+            responses.Add(rep1);
+            responses.Add(rep2);
+
+            question.responses = responses;
+
+            var optionsBuilder = new DbContextOptionsBuilder<ExamGeneratorContext>();
+            using (var _context = new ExamGeneratorContext(optionsBuilder.Options))
+            {
+                _context.Add(question);
+                //await _context.SaveChangesAsync();
+            }
             return View("Validate");
         }
         public IActionResult InsertSChoice(string name, string q1, string q2, string q3, string q4)
         {
-            //Insert Donné en table
-           //_context.Add(question);
-            //await _context.SaveChangesAsync();
+            List<Response> responses = new List<Response>();
+            var question = new Question()
+            {
+                question = name,
+                type = QuestionType.U,
+                responses = responses
+            };
+            var rep1 = new Response()
+            {
+                response = q1,
+                question = question,
+                isCorrect = true
+            };
+            var rep2 = new Response()
+            {
+                response = q2,
+                question = question,
+                isCorrect = false
+            };
+            var rep3 = new Response()
+            {
+                response = q3,
+                question = question,
+                isCorrect = false
+            };
+            var rep4 = new Response()
+            {
+                response = q4,
+                question = question,
+                isCorrect = false
+            };
+            responses.Add(rep1);
+            responses.Add(rep2);
+            responses.Add(rep3);
+            responses.Add(rep4);
+
+            question.responses = responses;
+
+            var optionsBuilder = new DbContextOptionsBuilder<ExamGeneratorContext>();
+            
+            using (var _context = new ExamGeneratorContext(optionsBuilder.Options))
+            {
+                _context.Add(question);
+                //await _context.SaveChangesAsync();
+            }
             return View("Validate");
         }
         public IActionResult InsertMChoice(string name, string q1, string q2, string q3, string q4)
         {
-            //Insert Donné en table
-            //_context.Add(question);
-            //await _context.SaveChangesAsync();
+            List<Response> responses = new List<Response>();
+            var question = new Question()
+            {
+                question = name,
+                type = QuestionType.Y,
+                responses = responses
+            };
+            var rep1 = new Response()
+            {
+                response = q1,
+                question = question,
+                isCorrect = true
+            };
+            var rep2 = new Response()
+            {
+                response = q2,
+                question = question,
+                isCorrect = false
+            };
+            var rep3 = new Response()
+            {
+                response = q3,
+                question = question,
+                isCorrect = false
+            };
+            var rep4 = new Response()
+            {
+                response = q4,
+                question = question,
+                isCorrect = false
+            };
+            
+            responses.Add(rep1);
+            responses.Add(rep2);
+            responses.Add(rep3);
+            responses.Add(rep4);
+
+            question.responses = responses;
+
+            var optionsBuilder = new DbContextOptionsBuilder<ExamGeneratorContext>();
+            
+            using (var _context = new ExamGeneratorContext(optionsBuilder.Options))
+            {
+                _context.Add(question);
+                //await _context.SaveChangesAsync();
+            }
             return View("Validate");
         }
 
